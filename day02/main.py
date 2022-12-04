@@ -48,7 +48,7 @@ with open('example.txt') as file:
 with open('input.txt') as file:
   rounds = extract_rounds(file)
   score: int = calc_score_part1(rounds)
-  print(f'Example for Part 1: {score}')
+  print(f'Answer for Part 1: {score}')
 
   score2: int = calc_score_part2(rounds)
-  print(f'Example for Part 2: {score2}\n')
+  print(f'Answer for Part 2: {score2}\n')
