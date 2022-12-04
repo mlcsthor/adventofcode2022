@@ -1,4 +1,6 @@
 from typing import TextIO
+from functools import reduce
+from operator import ior
 
 def get_rucksacks(file: TextIO) -> list[list]:
   return [list(line.strip()) for line in file.readlines()]
@@ -12,7 +14,7 @@ def calc_priorities_part1(rucksacks: list[list]) -> int:
   for rucksack in rucksacks:
     first_compartment = rucksack[:len(rucksack)//2]
     second_compartment = rucksack[len(rucksack)//2:]
-    common_items = list(set(first_compartment) & set(second_compartment))
+    common_items = set(first_compartment) & set(second_compartment)
 
     for item in common_items:
       priorities += get_priorities(item)
@@ -24,7 +26,7 @@ def calc_priorities_part2(rucksacks: list[list]) -> int:
   groups = [rucksacks[idx:idx + 3] for idx in range(0, len(rucksacks), 3)]
 
   for group in groups:
-    badge = list(set(group[0]) & set(group[1]) & set(group[2]))[0]
+    badge = reduce(lambda x, y: x & y, map(set, group)).pop()
     priorities += get_priorities(badge)
 
   return priorities
