@@ -5,12 +5,14 @@ def calc_calories_per_elf(file: TextIO) -> list[int]:
   count = 0
 
   for line in file.readlines():
-    if line.strip() == '':
+    line = line.strip()
+    
+    if line == '':
       elves.append(count)
       count = 0
       continue
 
-    count += int(line.strip())
+    count += int(line)
 
   elves.append(count)
   return elves

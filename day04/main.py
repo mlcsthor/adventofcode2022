@@ -4,26 +4,25 @@ def get_assignments(file: TextIO) -> list[list]:
   assignments = []
 
   for line in file.readlines():
-    sections = []
+    assignment = []
     pairs = line.strip().split(',')
 
     for pair in pairs:
-      pair = pair.split('-')
-      sections.append(list(range(int(pair[0]), int(pair[1]) + 1)))
+      start, end = map(int, pair.split('-'))
+      assignments.append([x for x in range(start, end + 1)])
 
-    assignments.append(sections)
+    assignments.append(assignment)
 
   return assignments
 
 def get_overlapping(assignments: list[list]) -> int:
   overlapping: int = 0
 
-  for assignment in assignments:
-    check1 = all(item in assignment[0] for item in assignment[1])
-    check2 = all(item in assignment[1] for item in assignment[0]) 
-    check = check1 or check2
+  for first_half, second_half in assignments:
+    first_check = all(item in first_half for item in second_half)
+    second_check = all(item in second_half for item in first_half) 
 
-    if check:
+    if first_check or second_check:
       overlapping += 1
 
   return overlapping
@@ -31,12 +30,11 @@ def get_overlapping(assignments: list[list]) -> int:
 def get_overlapping_at_all(assignments: list[list]) -> int:
   overlapping: int = 0
 
-  for assignment in assignments:
-    check1 = any(item in assignment[0] for item in assignment[1])
-    check2 = any(item in assignment[1] for item in assignment[0]) 
-    check = check1 or check2
+  for first_half, second_half in assignments:
+    first_check = any(item in first_half for item in second_half)
+    second_check = any(item in second_half for item in first_half) 
 
-    if check:
+    if first_check or second_check:
       overlapping += 1
 
   return overlapping
