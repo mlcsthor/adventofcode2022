@@ -9,17 +9,17 @@ def find_first_marker(buffer: str, sequence_size: int):
 print('### Advent of Code Day 4 ###\n')
 
 with open('example.txt') as file:
-  lines = file.readlines()
-  marker = find_first_marker(lines[0].strip(), sequence_size=4)
+  line = file.readline().strip()
+  marker = find_first_marker(line, sequence_size=4)
   print(f'Example for Part 1: {marker}')
 
-  marker = find_first_marker(lines[0].strip(), sequence_size=14)
+  marker = find_first_marker(line, sequence_size=14)
   print(f'Example for Part 2: {marker}\n')
 
 with open('input.txt') as file:
-  lines = file.readlines()
-  marker = find_first_marker(lines[0].strip(), sequence_size=4)
+  line = file.readline().strip()
+  marker = find_first_marker(line, sequence_size=4)
   print(f'Answer for Part 1: {marker}')
 
-  marker = find_first_marker(lines[0].strip(), sequence_size=14)
+  marker = find_first_marker(line, sequence_size=14)
   print(f'Answer for Part 2: {marker}')
