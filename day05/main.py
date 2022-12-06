@@ -54,7 +54,7 @@ print('### Advent of Code Day 5 ###\n')
 with open('example.txt') as file:
   lines = file.readlines()
   print(f'Example for Part 1: {rearrange(lines, mover=Mover.CRATE_MOVER_9000)}')
-  print(f'Example for Part 2: {rearrange(lines, mover=Mover.CRATE_MOVER_9001)}')
+  print(f'Example for Part 2: {rearrange(lines, mover=Mover.CRATE_MOVER_9001)}\n')
 
 with open('input.txt') as file:
   lines = file.readlines()
