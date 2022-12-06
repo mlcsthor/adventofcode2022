@@ -22,4 +22,4 @@ with open('input.txt') as file:
   print(f'Answer for Part 1: {marker}')
 
   marker = find_first_marker(lines[0].strip(), sequence_size=14)
-  print(f'Answer for Part 1: {marker}')
+  print(f'Answer for Part 2: {marker}')
